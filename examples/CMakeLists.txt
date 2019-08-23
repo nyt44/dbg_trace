@@ -1,0 +1,2 @@
+add_executable(different_data_types different_data_types.cpp)
+target_link_libraries(different_data_types dbg_trace)

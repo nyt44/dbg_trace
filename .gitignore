@@ -1,0 +1,12 @@
+out/**
+
+#Qt creator files
+*.config
+*.creator
+*.creator.user*
+*.files
+*.includes
+.gdb_history
+*.cflags
+*.cxxflags
+
