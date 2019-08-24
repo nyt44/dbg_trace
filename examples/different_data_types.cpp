@@ -4,13 +4,14 @@
 
 int main()
 {
-  dbg_trace::Log("Example C String");
+  dbg_trace::SetVerbosity(dbg_trace::Level::kDebug);
+  dbg_trace::Debug("Example C String");
 
   std::string str{"Example C++ String"};
-  dbg_trace::Log(str);
+  dbg_trace::Debug(str);
 
-  dbg_trace::Log("int: {}", 1);
-  dbg_trace::Log("float: {}", 3.14);
-  dbg_trace::Log("bool: {}", true);
-  dbg_trace::Log("Multiple data types: {}, {}, {}, {}", 23, "qwerty", 2.3, false);
+  dbg_trace::Debug("int: {}", 1);
+  dbg_trace::Debug("float: {}", 3.14);
+  dbg_trace::Debug("bool: {}", true);
+  dbg_trace::Debug("Multiple data types: {}, {}, {}, {}", 23, "qwerty", 2.3, false);
 }
