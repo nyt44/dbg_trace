@@ -2,6 +2,8 @@
 
 #include <cstring>
 #include <utility>
+#include <unordered_map>
+#include <string>
 
 #include <fmt/format.h>
 
@@ -22,12 +24,20 @@
 namespace dbg_trace
 {
 
+const std::unordered_map<Level, std::string> verbosity_level_string =
+{
+  {Level::kError, "ERROR"},
+  {Level::kWarning, "WARNING"},
+  {Level::kInfo, "INFO"},
+  {Level::kDebug, "DEBUG"}
+};
+
 template <typename... Args>
 void Print(Level verbosity_level, const char* file_name, int line_number, Args... args)
 {
   if (ShouldBeLogged(verbosity_level))
   {
-    fmt::print("{}:{} ", file_name, line_number);
+    fmt::print("[{}] {}:{}  ", verbosity_level_string.at(verbosity_level), file_name, line_number);
     fmt::print(std::forward<Args>(args)...);
     fmt::print("\n");
   }
