@@ -2,10 +2,10 @@
 
 void PrintTest()
 {
-  dbg_trace::Error("Example1");
-  dbg_trace::Warning("Example2");
-  dbg_trace::Info("Example3");
-  dbg_trace::Debug("Example4");
+  LOG_ERROR("Example1");
+  LOG_WARNING("Example2");
+  LOG_INFO("Example3");
+  LOG_DEBUG("Example4");
 }
 
 void PrintExpectedCount(int expected_count)

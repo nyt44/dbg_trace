@@ -5,13 +5,15 @@
 int main()
 {
   dbg_trace::SetVerbosity(dbg_trace::Level::kDebug);
-  dbg_trace::Debug("Example C String");
+  LOG_DEBUG("Example C String");
 
   std::string str{"Example C++ String"};
-  dbg_trace::Debug(str);
+  LOG_DEBUG(str);
 
-  dbg_trace::Debug("int: {}", 1);
-  dbg_trace::Debug("float: {}", 3.14);
-  dbg_trace::Debug("bool: {}", true);
-  dbg_trace::Debug("Multiple data types: {}, {}, {}, {}", 23, "qwerty", 2.3, false);
+  LOG_DEBUG("int: {}", 1);
+  LOG_DEBUG("float: {}", 3.14);
+  LOG_DEBUG("bool: {}", true);
+  LOG_DEBUG("Multiple data types: {}, {}, {}, {}", 23, "qwerty", 2.3, false);
+
+  LOG_DEBUG("Error code 0x{:x}", 23);
 }
