@@ -3,3 +3,6 @@ target_link_libraries(different_data_types dbg_trace)
 
 add_executable(verbosity_test verbosity_test.cpp)
 target_link_libraries(verbosity_test dbg_trace)
+
+add_executable(exceptions_test exceptions_test.cpp)
+target_link_libraries(exceptions_test dbg_trace)

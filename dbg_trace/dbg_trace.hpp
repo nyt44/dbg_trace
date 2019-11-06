@@ -4,6 +4,7 @@
 #include <utility>
 #include <unordered_map>
 #include <string>
+#include <exception>
 
 #include <fmt/format.h>
 
@@ -20,6 +21,14 @@
   dbg_trace::Print(dbg_trace::Level::kInfo, FILE_NAME, __LINE__, __VA_ARGS__)
 #define LOG_DEBUG(...) \
   dbg_trace::Print(dbg_trace::Level::kDebug, FILE_NAME, __LINE__, __VA_ARGS__)
+
+#define LOG_AND_THROW(...) \
+  dbg_trace::Print(dbg_trace::Level::kError, FILE_NAME, __LINE__, __VA_ARGS__); \
+  dbg_trace::ThrowRunTimeError(__VA_ARGS__)
+#define LOG_AND_THROW_IF_NULLPTR(ptr, ...)\
+  if ((ptr) == nullptr) { \
+    LOG_AND_THROW(__VA_ARGS__); \
+  }
 
 namespace dbg_trace
 {
@@ -41,6 +50,13 @@ void Print(Level verbosity_level, const char* file_name, int line_number, Args..
     fmt::print(std::forward<Args>(args)...);
     fmt::print("\n");
   }
+}
+
+template <typename... Args>
+void ThrowRunTimeError(Args... args)
+{
+  std::string msg = fmt::format(std::forward<Args>(args)...);
+  throw std::runtime_error{msg};
 }
 
 } // namespace dbg_trace
